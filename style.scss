@@ -1,0 +1,623 @@
+@import "variables";
+@import "reset";
+@import "breakpoints";
+
+
+#menu {
+    position: absolute;
+    opacity: 0;
+
+    &:checked {
+        +.hamburger-menu {
+            position: fixed;
+            .patty {
+                background-color: rgba(255, 255, 255, 0);
+
+                &::before {
+                    transform: rotate(-45deg);
+                    top: 0;
+                    left: 0;
+                }
+
+                &::after {
+                    transform: rotate(45deg);
+                    top: 0;
+                    left: 0;
+                }
+            }
+        }
+
+        
+
+        ~.upfold {
+            .navbar {
+                opacity: 1;
+                a{
+                    display: block;
+
+                }
+            }
+        }
+    }
+
+
+}
+
+.hamburger-menu {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+    z-index: 5;
+    display: none;
+
+    @include mobile {
+        display: block;
+    }
+
+    .patty {
+        width: 1.5rem;
+        height: 0.2rem;
+        background-color: white;
+        position: relative;
+        transition: transform 0.3s;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -0.5rem;
+            left: 0;
+            width: 1.5rem;
+            height: 0.2rem;
+            background-color: white;
+            transition: transform 0.3s;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0.5rem;
+            left: 0;
+            width: 1.5rem;
+            height: 0.2rem;
+            background-color: white;
+            transition: transform 0.3s;
+        }
+    }
+}
+
+
+
+.upfold {
+    width: 100%;
+    position: relative;
+    background-image: url(images/upfold-bg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    .upfold-container {
+        width: 70%;
+        margin-left: 15%;
+        @include mobile{
+            width: 90%;
+            margin-left: 5%;
+            padding-top: 5rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 40%;
+            margin-left: 60%;
+            height: 7rem;
+            @include mobile{
+                width: 100%;
+                position: fixed;
+                margin: 0;
+                left: 0;
+                top: 0;
+                flex-direction: column;
+                height: 100vh;
+                justify-content: space-around;
+                padding: 25vh 0;
+                z-index: 2;
+                -webkit-backdrop-filter: blur(10px);
+                backdrop-filter: blur(10px);
+                background-color: rgba(0, 0, 0, 0.5); 
+                opacity: 0;
+            }
+
+            a {
+                color: white;
+                opacity: 0.7;
+                text-decoration: none;
+                font-size: 1.2rem;
+                display: none;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+            a.action{
+                opacity: 1;
+            }
+        }
+
+        .upfold-info-card {
+            display: flex;
+            flex-direction: column;
+            background-color: $satin_deep_black;
+            box-shadow: 0 0 2rem $black_shadow;
+            padding: 4rem;
+            @include mobile{
+                padding: 2rem;
+            }
+            
+
+            .branding {
+                display: flex;
+                align-items: center;
+                margin-bottom: 5%;
+                @include mobile{
+                    justify-content: center;
+                }
+
+                .brand-image {
+                    width: 3%;
+                    margin-right: 1rem;
+                    @include mobile{
+                        width: 18%;
+                    }
+                }
+
+                .brand-name {
+                    font-size: 2rem;
+                    color: white;
+                }
+            }
+
+            .upfold-floating-image {
+                position: absolute;
+                bottom: -15%;
+                right: 0;
+                width: 48%;
+                overflow: hidden;
+                @include mobile{
+                    bottom: -10rem;
+                }
+
+                img {
+                    width: 101%;
+                    transform: scaleX(-1);
+                    @include mobile{
+                        width: 500%;
+                    }
+                }
+            }
+
+            .upfold-info-card-descriprion {
+                width: 50%;
+                padding-left: 3%;
+                display: flex;
+                flex-direction: column;
+                @include mobile{
+                    width: 100%;
+                    justify-content: center;
+                    text-align: center;
+                    padding: 0;
+                }
+
+                article {
+                    color: white;
+                    font-size: 1.2rem;
+                    line-height: 2rem;
+                    opacity: 0.8;
+                    @include mobile{
+                        margin-top: 2rem;
+                    }
+                }
+
+                .upfold-info-card-descriprion-button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    text-decoration: none;
+                    font-size: 1.2rem;
+                    height: 3rem;
+                    margin-top: 2rem;
+                    background-color: $black_gray;
+                    @include mobile{
+                        position: relative;
+                        z-index: 1;
+                    }
+                }
+            }
+
+            .upfold-info-card-content {
+                display: flex;
+                @include mobile{
+                    flex-direction: column;
+                }
+
+                .upfold-info-card-header-image {
+                    width: 50%;
+                    border-right: 1px solid $white_light;
+                    padding-right: 5%;
+                    @include mobile{
+                        width: 100%;
+                        border: none;
+                    }
+
+                    h1 {
+                        font-size: 6rem;
+                        color: white;
+                        @include mobile{
+                            font-size: 3rem;
+                            text-align: center;
+                            margin-top: 2rem;
+                        }
+                    }
+
+                    .upfold-info-card-images {
+                        display: flex;
+                        justify-content: space-between;
+                        padding-top: 5%;
+                        @include mobile{
+                            padding-top: 2rem;
+                        }
+
+                        figure {
+                            img {
+                                width: 10rem;
+                                height: 10rem;
+                                object-fit: cover;
+                                object-position: bottom;
+                                @include mobile{
+                                    width: 6rem;
+                                    height: 6rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.our-products {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10% 0;
+    padding: 5% 0;
+    background-image: url(images/product-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .our-products-container {
+        width: 60%;
+        margin-left: 20%;
+        display: flex;
+        flex-direction: column;
+
+        @include mobile{
+            width: 100%;
+            margin: 0;
+        }
+
+        .product-heading {
+            text-align: center;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 10%;
+            @include mobile{
+                font-size: 2.5rem;
+            }
+
+        }
+
+        .product-info-card {
+            display: flex;
+            flex-direction: column;
+            background-color: $river_styx;
+            padding: 4rem 15rem;
+            position: relative;
+            @include mobile{
+                padding: 4rem 2rem;
+            }
+
+            .product-info {
+                border-bottom: 1px solid $white_light;
+                padding: 3rem 0;
+                position: relative;
+                justify-content: center;
+
+                &:first-child {
+                    padding-top: 0;
+                }
+
+                &:last-child {
+                    border: none;
+                    padding-bottom: 0;
+                }
+
+                &:nth-child(2) {
+                    .product-image {
+                        left: auto;
+                        top: -5rem;
+                        right: -30rem;
+                        @include mobile{
+                            top: auto;
+                            right: auto;
+                        }
+                    }
+
+                    .product-info-description {
+                        margin-left: -20%;
+                        text-align: right;
+                        @include mobile{
+                            text-align: center;
+                            margin: auto;
+                            margin-top: 2rem;
+                        }
+                    }
+                }
+
+                &:nth-child(3) {
+                    .product-image {
+                        top: auto;
+                        bottom: -10rem;
+                        @include mobile{
+                            top: auto;
+                            bottom: auto;
+                        }
+                    }
+                }
+
+                .product-image {
+                    width: 25rem;
+                    height: 33rem;
+                    position: absolute;
+                    top: -10rem;
+                    left: -30rem;
+                    overflow: hidden;
+                    box-shadow: 0 0 3rem $black_shadow;
+                    @include mobile{
+                        position: relative;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        width: 100%;
+                        height: 50vh;
+                    }
+                }
+
+                .product-info-description {
+                    width: 120%;
+                    color: white;
+                    @include mobile{
+                        width: auto;
+                        text-align: center;
+                        margin: 1rem;
+                        margin-top: 2rem;
+                    }
+
+                    article {
+                        h2 {
+                            margin-bottom: 2rem;
+                            font-size: 2.5rem;
+                            @include mobile{
+                                font-size: 1.5rem;
+                            }
+                        }
+
+                        p {
+                            margin-bottom: 2rem;
+                            font-size: 1.2rem;
+                            line-height: 2rem;
+                            opacity: 0.6;
+                            @include mobile{
+                                font-size: 1rem;
+                                line-height: 1.5rem;
+                            }
+                        }
+                    }
+
+                    .product-info-descriprion-button {
+                        color: white;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        font-size: 1.2rem;
+                        @include mobile{
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.meterials-list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 5% 0 5%;
+    padding-top: 5%;
+    padding-bottom: 10%;
+    background-image: url(images/meterial-bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    @include mobile{
+        background-size: cover;
+        margin-top: 0;
+        padding-top: 0;
+        background-position-x: center;
+    }
+
+    .meterials-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 60%;
+        margin-left: 20%;
+        @include mobile{
+            width: 90%;
+            margin-left: 5%;
+        }
+
+        .meterials-list-heading {
+            margin-bottom: 10%;
+            font-size: 3.5rem;
+            width: 100%;
+            text-align: center;
+            color: white;
+            @include mobile{
+                font-size: 2.5rem;
+                margin-bottom: 4rem;
+            }
+        }
+
+        .meterial {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 33.33%;
+            margin-bottom: 3rem;
+            position: relative;
+            color: white;
+            @include mobile{
+                width: 40%;
+                margin-bottom: 0.5rem;
+            }
+
+            p {
+                position: absolute;
+                top: 43%;
+                text-align: center;
+                font-size: 2rem;
+                text-transform: uppercase;
+                text-shadow: 0 0 0.5rem black;
+                @include mobile{
+                    font-size: 1.3rem;
+                }
+            }
+
+            figure {
+                img {
+                    height: 15rem;
+                    width: 15rem;
+                    border-radius: 10rem;
+                    object-fit: cover;
+                    object-position: center;
+                    box-shadow: 0 0 3rem $black_shadow;
+                    @include mobile{
+                        width: 9rem;
+                        height: 9rem;
+                    }
+                }
+            }
+
+        }
+
+    }
+}
+
+footer {
+    width: 100%;
+    background-image: url(images/footer-bg.png);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: contain;
+
+    .contact-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: $satin_deep_black;
+        width: 60%;
+        margin-left: 20%;
+        box-shadow: 0 0 3rem $black_shadow;
+        padding: 4rem 2rem 2rem 2rem;
+        @include mobile{
+            width: 90%;
+            margin-left: 5%;
+            padding: 2rem 0;
+        }
+
+        .contact-card-header {
+            text-align: center;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 5%;
+            @include mobile{
+                font-size: 2.5rem;
+            }
+        }
+
+        .contact-card-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 90%;
+
+            .contact-card-form-inputs-holder {
+                display: flex;
+
+                input {
+                    width: 50%;
+                    margin: 1rem;
+                    height: 2.5rem;
+                    padding: 1rem;
+                    font-size: 1.2rem;
+                    background-color: $river_styx;
+                    color: white;
+                    border: none;
+                }
+            }
+
+            textarea {
+                margin: 1rem;
+                padding: 1rem;
+                font-size: 1.2rem;
+                background-color: $river_styx;
+                color: white;
+                border: none;
+            }
+
+            button {
+                margin: 1rem;
+                padding: 1rem;
+                font-size: 1.2rem;
+                background-color: $black_gray;
+                color: white;
+                border: none;
+            }
+        }
+    }
+
+    .social-media-icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 3%;
+
+        a {
+            margin: 1rem;
+        }
+    }
+
+    .copyrights {
+        padding-bottom: 3rem;
+        color: white;
+        text-align: center;
+        opacity: 0.6;
+    }
+}
